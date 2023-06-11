@@ -7,6 +7,7 @@ export const apiSlice = createApi({
     endpoints: (builder) => ({
         getTodos: builder.query({
             query: () => '/todos',
+            transformResponse:res=>res.sort((x,y)=>y.id - x.id),
             providesTags:['Todos']
         }),
         addTodo: builder.mutation({
